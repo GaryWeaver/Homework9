@@ -62,6 +62,10 @@ $(document).ready(function() {
     updateSkillsList();
 
     $('#addSkillButton').click(function() {
+        addSkill();
+    });
+
+    function addSkill() {
         const newSkill = $('#skillInput').val().trim();
         if (newSkill && !skills.includes(newSkill)) {
             skills.push(newSkill);
@@ -70,6 +74,14 @@ $(document).ready(function() {
             $('#skillsList').fadeIn();
         } else {
             alert('Skill already exists or input is invalid!');
+        }
+    }
+    
+    $('#skillInput').keydown(function(event) {
+        if (event.key === 'Enter') {
+            addSkill();
+        } else if (event.key === 'Escape') {
+            $('#skillInput').val(''); // Clear the input field
         }
     });
 
@@ -95,5 +107,83 @@ $(document).ready(function() {
         const index = $(this).parent().data('index');
         skills.splice(index, 1);
         updateSkillsList();
+    });
+});
+
+$(document).ready(function() {
+    // Step 1: Store the navigation menu items in an array
+    const navItems = [
+        { name: "Summary", link: "#summary" },
+        { name: "Education", link: "#education" },
+        { name: "Skills", link: "#skills" },
+        { name: "Projects", link: "#projects" },
+        { name: "Contact Info", link: "#contact" }
+    ];
+
+    // Step 2: Dynamically render the menu items
+    const $navMenu = $('#navMenu');
+    navItems.forEach(item => {
+        $navMenu.append(`<li><a href="${item.link}">${item.name}</a></li>`);
+    });
+
+    // Step 3: Smooth scrolling for navigation items
+    $navMenu.on('click', 'a', function(event) {
+        event.preventDefault(); // Prevent default anchor click behavior
+        const target = $(this).attr('href'); // Get the target section
+        
+        // Animate scrolling to the target section
+        $('html, body').animate({
+            scrollTop: $(target).offset().top // Scroll to the target's top position
+        }, 800); // 800 milliseconds duration
+    });
+});
+
+const projects = [
+    {
+        title: 'Project #1',
+        description: 'Lorem ipsum odor amet, consectetuer',
+        deadline: new Date("12/14/2024"),
+        imageURL: 'portfolioImage1.jpeg'
+    },
+    {
+        title: 'Project #2',
+        description: 'Sed donec mollis vel rutrum; primis',
+        deadline: new Date("11/05/2024"),
+        imageURL: 'portfolioImage2.jpeg'
+    },
+    {
+        title: 'Project #3',
+        description: 'Augue consequat venenatis tortor turpis aliquam nullam',
+        deadline: new Date("01/10/2025"),
+        imageURL: 'portfolioImage1.jpeg'
+    }
+];
+
+$(document).ready(function() {
+    // Function to render projects
+    function renderProjects(projects) {
+        const $projectContainer = $('#projectContainer');
+        $projectContainer.empty(); // Clear the container before rendering
+
+        projects.forEach(project => {
+            const projectCard = `
+                <div class="project-card">
+                    <img src="${project.imageURL}" alt="${project.title}" height:auto;">
+                    <h4>${project.title}</h4>
+                    <p>${project.description}</p>
+                    <p><strong>Deadline:</strong> ${project.deadline.toLocaleDateString()}</p>
+                </div>
+            `;
+            $projectContainer.append(projectCard);
+        });
+    }
+
+    // Initial rendering of projects
+    renderProjects(projects);
+
+    // Sorting functionality
+    $('#sortButton').on('click', function() {
+        projects.sort((a, b) => a.deadline - b.deadline); // Sort by deadline (earliest to latest)
+        renderProjects(projects); // Re-render sorted projects
     });
 });

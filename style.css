@@ -208,3 +208,33 @@
         font-size: 19px;
     }
 }
+
+.edit-button,
+.delete-button {
+    padding: 8px 12px;
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+.edit-button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+}
+
+/* Delete button styles */
+.delete-button {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+}
+
+/* Hover effects */
+.edit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.delete-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
