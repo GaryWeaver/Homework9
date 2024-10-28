@@ -34,3 +34,66 @@ function daysUntilDeadline(deadline) {
     const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
     return daysRemaining;
 }
+
+$(document).ready(function() {
+    let skills = [
+        "Lorem",
+        "Ipsum",
+        "Sodales",
+        "Placerat",
+        "Primis",
+        "Auctor"
+    ];
+
+    const updateSkillsList = () => {
+        $('#skillsList').empty();
+        skills.forEach((skill, index) => {
+            const skillItem = $(`
+                <div class="skill-item" data-index="${index}">
+                    ${skill}
+                    <button class="edit-button">Edit</button>
+                    <button class="delete-button">Delete</button>
+                </div>
+            `);
+            $('#skillsList').append(skillItem);
+        });
+    };
+
+    updateSkillsList();
+
+    $('#addSkillButton').click(function() {
+        const newSkill = $('#skillInput').val().trim();
+        if (newSkill && !skills.includes(newSkill)) {
+            skills.push(newSkill);
+            $('#skillInput').val('');
+            updateSkillsList();
+            $('#skillsList').fadeIn();
+        } else {
+            alert('Skill already exists or input is invalid!');
+        }
+    });
+
+    // Edit Skill
+    $(document).on('click', '.edit-button', function() {
+        const index = $(this).parent().data('index');
+        const currentSkill = skills[index];
+        const newSkill = prompt('Edit skill:', currentSkill); // Prompt user for new skill name
+
+        // Check if user provided a new skill name and it isn't a duplicate
+        if (newSkill && newSkill.trim() !== '' && !skills.includes(newSkill)) {
+            skills[index] = newSkill.trim(); // Update skill in array
+            updateSkillsList(); // Refresh the displayed skills list
+        } else if (newSkill === null) {
+            // User canceled the prompt
+            return;
+        } else {
+            alert('Skill already exists or input is invalid!'); // Alert if the new skill is a duplicate or empty
+        }
+    });
+
+    $(document).on('click', '.delete-button', function() {
+        const index = $(this).parent().data('index');
+        skills.splice(index, 1);
+        updateSkillsList();
+    });
+});
