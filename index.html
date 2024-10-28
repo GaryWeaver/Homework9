@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Homework 4</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+    .item1 { grid-area: header; }
+    .item2 { grid-area: sidebar; }
+    .item3 { grid-area: main; }
+    .item4 { grid-area: footer; }
+    
+    .grid-container {
+      display: grid;
+      grid-template-areas:
+        'sidebar header header header'
+        'sidebar main main main'
+        'sidebar main main main'
+        'sidebar main main main'
+        'footer footer footer footer';
+      gap: 5px;
+      background-color: #f35d21;
+      padding: 15px;
+    }
+    
+    .grid-container > div {
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+    }
+</style>
+
+    <body>
+        <div class="grid-container">
+        <div class="item2">
+            <nav>
+                <ul class="nav-items">
+                    <li><a href="#summary">Summary</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact Info</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="item1">
+            <h1 id="summary">Gary Weaver</h1>
+            <h2>Software Engineering</h2>
+        </div>
+
+        <div class="item3">
+            <h3><u>Introduction</u></h3>
+            <div id="greeting-section"></div>
+            <p>
+                My name is Gary Weaver, my major is <b>software engineering</b>
+                I have worked with code since my <b>sophomore year of highschool</b> and
+                actually the first languages I worked with were <b>HTML, CSS, and JS</b>.
+                It has been a few years since I have used them though, so I'm quite
+                rusty. Recently I primarily use <i>C/C#</i> when I'm coding either for school
+                work or for fun practicing <i>game development</i>.
+            </p>
+            <h3 id="projects"><u>Projects</u></h3>
+            <h4>Project #1</h4>
+            <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Luctus sit mattis donec arcu 
+                cras porttitor taciti fusce nulla. Metus justo netus duis senectus duis. Venenatis 
+                ornare varius dis elit molestie potenti risus cras bibendum. Morbi orci volutpat, 
+                lectus condimentum dictum lobortis. Inceptos est fusce risus scelerisque dis molestie 
+                efficitur.
+            </p>
+            <image src="portfolioImage1.jpeg"></image>
+            <image src="portfolioImage2.jpeg"></image>
+            <image src="portfolioImage1.jpeg"></image>
+            <h4>Project #2</h4>
+            <p>Sed donec mollis vel rutrum; primis interdum aliquet elementum. Id magna finibus; class 
+                ut auctor fusce primis auctor. Luctus a nulla eros egestas venenatis! Efficitur taciti 
+                mi sodales placerat ornare vitae potenti nostra diam. Vitae mollis per volutpat 
+                sagittis montes. Augue consequat venenatis tortor turpis aliquam nullam. Cursus 
+                phasellus ut accumsan magna lacus. Malesuada enim mauris natoque suscipit turpis; 
+                scelerisque nam nisi. Sapien placerat erat vitae litora euismod iaculis.
+            </p>
+            <image src="portfolioImage1.jpeg"></image>
+            <image src="portfolioImage2.jpeg"></image>
+            <image src="portfolioImage1.jpeg"></image>
+            <div id="ongoing-project"></div>
+    
+            <h3 id="education"><u>Education/Experience</u></h3>
+            <p>
+                I've been taking CS classes for 4 years of my life,
+                so far I've learned about HTML, CSS, JS, Python, C,
+                and C#. I have the most experience working with C and
+                C# which has been around a year and a half.
+            </p>
+            <table>
+                <tr><th>Computer</th> <th>Science</th> <th>Langs</th></tr>
+                <tr>
+                    <td>Halfyear:</td>
+                    <td>HTML</td>
+                    <td>CSS</td>
+                    <td>Javascript</td>
+                </tr>
+                <tr>
+                    <td>Year+:</td>
+                    <td>Python</td>
+                    <td>C</td>
+                    <td>C#</td>
+                </tr>
+            </table>
+    
+            <div class="Skills"><h4 id="skills"><b>Skills</b></h4>
+                <div class="skills-grid">
+                    <div class="skill-item">Lorem</div>
+                    <div class="skill-item">Ipsum</div>
+                    <div class="skill-item">Sodales</div>
+                    <div class="skill-item">Placerat</div>
+                    <div class="skill-item important-skill">Primis</div>
+                    <div class="skill-item">Auctor</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="item4"><h3 id="contact"><u>Contact Information</u></h3>
+            <p>Phone Number: <a href="https://youtube.com">999-999-0000</a></p>
+        </hr>
+            <p>Email: <a href="https://gmail.com">totallyRealEmail@gmail.com</a></p>
+        </hr>
+            <p>Github: <a href="https://github.com/GaryWeaver">GaryWeaver</a></p>
+    
+            <h3><u>Resume Download</u></h3>
+            <p><a href="https://docs.google.com/document/d/11sPFYTRJN0mRI5Gq4hOZ1T03EWebqYIok2RPYlV_QVU/edit?usp=drive_link"  class="download-btn" download>Resume</a></p></div>
+    </div>
+    <script src="app.js"></script>
+    </body>
+
+</html>
